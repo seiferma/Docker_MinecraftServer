@@ -1,0 +1,4 @@
+#!/bin/sh
+
+PASSWORD=dummy
+./mcrcon -c -t -H 127.0.0.1 -P 25566 -p $PASSWORD

@@ -1,0 +1,19 @@
+sudo: false
+language: ruby
+services:
+  - docker
+before_install:
+  - git clone --depth 1 https://github.com/seiferma/Docker_BuildUtils.git /tmp/BuildUtils
+  - . /tmp/BuildUtils/travisSetup.sh
+script:
+  - travisBuildDockerhub.sh
+deploy:
+  provider: script
+  script: travisDeployDockerhub.sh
+  on:
+    branch: master
+env:
+  global: 
+    - IMAGE_NAME=seiferma/minecraft-server
+    - secure: "byY8wZOS+xu401E44olFlhDVYsIB0sPlmXRtOynR0Ik2I+tdGZzn0qdXzaNzZHouwgXoXxyxVpw8VJwfZyM9Nn9+bN/xwrwiX64Nynf0rtyvCOyHxgX7blbkgsnR2I2vNyIPnbK7Ybnli/QDm78Wx75PccsYz1a6ZmT58cKb1hh9u9rUW3EKG928rmpjWo9SPfNSgfYMRyH18t7jh9v8Wlw0cBLYJ0zTkFobYZJjfru4wj8QFjtHmHb24dwEahBZ2REPodkXH7pYEvc8IOJ60mpBzCD4mxnqw55mxtHd+nykHw0X1odGo2wJu7NcmtpSRks919Fp1bwBBIWYbDUmC4ZN0h4ngkE61jTrAW4HZw3yh1nDQfRCKpDOu16uK8k4S1huDJAZgUluunCgCk9rMh1Jof/m2fSUiHH82dD2AdDWGQ6sJR/vJi4Nj9rQoOKQJSI2kexWuzEt9fZpivspwaZd7zJoAcu1tZRKLa4SqRXiMm2s+Yx9VdWe9TUbfnfsIOVFOPvoy1zoECnsjYhnEssCc6bGsZPCGfoS06ayljIeo1rdmb9IorqRCzAQaawj6DmRzxRPHX0dNz1c3ZsBpLTHkWjpiny/arl/ee9W4lin0fRZvX7pw0NGjnCIXIoW27cVm5mPJ/7KrM6+qyVKQ/zypPDa4U3DbzEah+7BK+g="
+
