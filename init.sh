@@ -20,7 +20,6 @@ createDirLink() {
 }
 
 # Set symlinks to data volume
-sleep 10
 createDirLink config
 createDirLink world
 createFileLink server.properties "$(< server.properties.template)"
@@ -29,7 +28,6 @@ createFileLink whitelist.json '[]'
 createFileLink usercache.json '[]'
 createFileLink banned-ips.json '[]'
 createFileLink banned-players.json '[]'
-sleep 10
 
 # Generate random rcon password
 PASSWORD=$(openssl rand -hex 20)
